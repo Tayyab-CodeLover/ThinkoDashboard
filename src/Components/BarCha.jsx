@@ -52,7 +52,7 @@ const data = [
 
 const BarCha = () => {
     return (
-        <Box sx={{ display: 'flex', marginTop: '40px' }}>
+        <Box sx={{ display: 'flex', marginTop: '30px' }}>
             <SideNav />
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
               <Typography variant='h3' sx={{marginBottom:'5%'}}>Revenue</Typography>

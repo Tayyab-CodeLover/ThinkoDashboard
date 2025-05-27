@@ -3,53 +3,59 @@ import {
   Box,
   Typography,
   Button,
-  Divider,
-  Rating,
   Card,
   CardMedia,
-  CardActions,
   CardContent,
+  Drawer,
+  Avatar,
+  TextField,
+  IconButton,
+  Chip
 } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import insurance from "../asset/background1.jpg";
 import SideNav from "../Components/SideNav";
 
 const Book = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
+
   const cardData = [
     {
       niche: "Design",
-      title:
-        "Create styleguide foundation",
-      description:
-        "Create content for paceland App",
+      title: "Create styleguide foundation",
+      description: "Create content for paceland App",
       image: insurance,
     },
     {
       niche: "Research",
-      title:
-        "Copywriting content",
-      description:
-        "Create content for paceland App",
+      title: "Copywriting content",
+      description: "Create content for paceland App",
       image: insurance,
     },
     {
       niche: "Planning",
-      title:
-        "Update Requirement list",
-      description:
-        "Create content for paceland App",
+      title: "Update Requirement list",
+      description: "Create content for paceland App",
       image: insurance,
     },
   ];
 
-  const [expandedCard, setExpandedCard] = useState(null);
-  const toggleExpand = (index) => {
-    setExpandedCard(expandedCard === index ? null : index);
+  const handleDrawerOpen = (card) => {
+    setSelectedCard(card);
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
   };
 
   return (
     <Box sx={{ display: 'flex', marginTop: '40px' }}>
       <SideNav />
       <Box component="main" sx={{ py: 5 }}>
+        <Typography sx={{p:3,px:'50px', fontSize:'30px'}}>🔥 Tasks</Typography>
         <Box sx={{ py: "20px", px: '20px' }}>
           <Box sx={{ width: { lg: "100%" }, margin: "0 auto" }}>
             <Box
@@ -61,112 +67,133 @@ const Book = () => {
                 mt: 4,
               }}
             >
-              {cardData.map((card, index) => {
-                const isLong = card.description.length > 100;
-                return (
-                  <Card
-                    key={index}
+              {cardData.map((card, index) => (
+                <Card
+                  onClick={() => handleDrawerOpen(card)}
+                  key={index}
+                  sx={{
+                    width: { xs: "100%", lg: "30%" },
+                    padding: "18px",
+                    border: "1px solid rgb(231, 225, 225)",
+                    borderRadius: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Button
                     sx={{
-                      width: { xs: "100%", lg: "30%" },
-                      height: "auto",
-                      padding: "18px",
-                      margin: { xs: "10px", lg: "0" },
-                      transition: "0.3s",
-                      border: "1px solid rgb(231, 225, 225)",
-                      borderRadius: "10px",
+                      fontSize: "12px",
+                      color: "white",
+                      fontWeight: "600",
+                      backgroundColor: 'blue',
+                      marginBottom: "10px",
                     }}
                   >
-                    <Button
-                        sx={{
-                          marginLeft: "-8px",
-                          marginBottom: "10px",
-                          fontSize: "12px",
-                          color: "white",
-                          fontWeight: "600",
-                          backgroundColor:'blue',
-                          marginLeft:'3px'
-                        }}
-                      >
-                        {card.niche}
-                      </Button>
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={card.image}
-                      alt="green iguana"
-                      sx={{ borderRadius: "10px" }}
-                    />
-
-                    <CardContent sx={{ minHeight: "100px" }}>
-                      <Typography
-                        gutterBottom
-                        className="hover-text"
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          fontSize: "16px",
-                          fontWeight: 600,
-                          ":hover": { color: "blue" },
-                        }}
-                      >
-                        {card.title}
-                      </Typography>
-
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "text.secondary",
-                          fontSize: "14px",
-                          marginTop: "10px",
-                        }}
-                      >
-                        {card.description}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "text.secondary",
-                          fontSize: "16px",
-                          marginTop: "10px",
-                          border:'1px solid gray',
-                          width:'fit-content',
-                          padding:'5px',
-                          borderRadius:'10px',
-                          color:'white'
-                        }}
-                      >
-                        May 16, 2025
-                      </Typography>
-                    </CardContent>
-                    {isLong && (
-                      <CardActions>
-                        <Button
-                          onClick={() => toggleExpand(index)}
-                          sx={{
-                            fontSize: "10px",
-                            textTransform: "none",
-                            color: "black",
-                            fontWeight: "600",
-                            position: "relative",
-                            ":hover": {
-                              color: "blue",
-                              background: "none",
-                            },
-                          }}
-                        >
-                          {expandedCard === index ? "Learn Less" : "Learn More"}
-                        </Button>
-                      </CardActions>
-                    )}
-                  </Card>
-                );
-              })}
+                    {card.niche}
+                  </Button>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={card.image}
+                    alt="Task"
+                    sx={{ borderRadius: "10px" }}
+                  />
+                  <CardContent>
+                    <Typography
+                      variant="h5"
+                      sx={{ fontSize: "16px", fontWeight: 600 }}
+                    >
+                      {card.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        fontSize: "14px",
+                        marginTop: "10px",
+                      }}
+                    >
+                      {card.description}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        fontSize: "16px",
+                        marginTop: "10px",
+                        border: '1px solid gray',
+                        width: 'fit-content',
+                        padding: '5px',
+                        borderRadius: '10px',
+                        color: 'white',
+                      }}
+                    >
+                      May 16, 2025
+                    </Typography>
+                  </CardContent>
+                </Card>
+              ))}
             </Box>
           </Box>
         </Box>
       </Box>
-    </Box>
-  )
-}
 
-export default Book
+      {/* Drawer Component */}
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={handleDrawerClose}
+        sx={{
+          "& .MuiDrawer-paper": {
+            width: 400,
+            backgroundColor: "#1e293b",
+            borderLeft: "1px solid #334155",
+            marginTop:'4.3%',
+            width:'40%',
+            borderRadius:'50px',
+            height:'90vh',
+            marginRight:'10px'
+          },
+        }}
+      >
+        <Box sx={{ p: 3 }}>
+          <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2, color: "white" }}>
+            {selectedCard?.title}
+          </Typography>
+          <Typography variant="body2" sx={{ mb: 2, color: "gray" }}>
+            {selectedCard?.description}
+          </Typography>
+
+          {/* Add more content here */}
+          <Typography variant="subtitle1" sx={{ color: "white", fontWeight: "bold", mb: 2 }}>
+            Attachments
+          </Typography>
+          <Box sx={{ backgroundColor: "#334155", p: 1, borderRadius: 1, mb: 1 }}>
+            <AttachFileIcon sx={{ color: "white" }} />
+            <Typography variant="body2" sx={{ color: "white" }}>Client_Proposal.xls</Typography>
+          </Box>
+          <TextField
+            fullWidth
+            placeholder="Write a comment"
+            variant="outlined"
+            size="small"
+            sx={{
+              mt: 2,
+              "& .MuiOutlinedInput-root": {
+                backgroundColor: "#334155",
+                color: "white",
+              },
+            }}
+            InputProps={{
+              endAdornment: (
+                <IconButton size="small">
+                  <SendIcon sx={{ color: "white" }} />
+                </IconButton>
+              ),
+            }}
+          />
+        </Box>
+      </Drawer>
+    </Box>
+  );
+};
+
+export default Book;
