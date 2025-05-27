@@ -69,7 +69,7 @@ const Book = () => {
                     sx={{
                       width: { xs: "100%", lg: "30%" },
                       height: "auto",
-                      padding: "12px",
+                      padding: "18px",
                       margin: { xs: "10px", lg: "0" },
                       transition: "0.3s",
                       border: "1px solid rgb(231, 225, 225)",
@@ -81,17 +81,14 @@ const Book = () => {
                           marginLeft: "-8px",
                           marginBottom: "10px",
                           fontSize: "12px",
-                          color: "rgb(168, 159, 159)",
+                          color: "white",
                           fontWeight: "600",
-                          ":hover": {
-                            color: "blue",
-                            background: "none",
-                          },
+                          backgroundColor:'blue',
+                          marginLeft:'3px'
                         }}
                       >
                         {card.niche}
                       </Button>
-                      <p>Waqas</p>
                     <CardMedia
                       component="img"
                       height="200"
@@ -107,7 +104,7 @@ const Book = () => {
                         variant="h5"
                         component="div"
                         sx={{
-                          fontSize: "20px",
+                          fontSize: "16px",
                           fontWeight: 600,
                           ":hover": { color: "blue" },
                         }}
@@ -119,11 +116,11 @@ const Book = () => {
                         variant="body2"
                         sx={{
                           color: "text.secondary",
-                          fontSize: "16px",
+                          fontSize: "14px",
                           marginTop: "10px",
                         }}
                       >
-
+                        {card.description}
                       </Typography>
                       <Typography
                         variant="body2"
@@ -131,11 +128,14 @@ const Book = () => {
                           color: "text.secondary",
                           fontSize: "16px",
                           marginTop: "10px",
+                          border:'1px solid gray',
+                          width:'fit-content',
+                          padding:'5px',
+                          borderRadius:'10px',
+                          color:'white'
                         }}
                       >
-                        ✔︎ Modern infrastructure
-                        <br />
-                        ✔︎ Consulting services
+                        May 16, 2025
                       </Typography>
                     </CardContent>
                     {isLong && (

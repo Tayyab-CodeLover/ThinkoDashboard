@@ -29,6 +29,10 @@ import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { ColorModeContext } from './CustomThemeProvider'
 import SettingsIcon from '@mui/icons-material/Settings';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 import { useNavigate } from 'react-router';
 
@@ -173,7 +177,7 @@ export default function SideNav() {
                                 justifyContent: 'center',
                             }}
                         >
-                            <InboxIcon />
+                            <DashboardIcon />
                         </ListItemIcon>
                         <ListItemText
                             primary="Dashboard"
@@ -222,7 +226,7 @@ export default function SideNav() {
                                 justifyContent: 'center',
                             }}
                         >
-                            <InboxIcon />
+                            <CalendarMonthIcon />
                         </ListItemIcon>
                         <ListItemText
                             primary="Calender"
@@ -245,7 +249,7 @@ export default function SideNav() {
                                 justifyContent: 'center',
                             }}
                         >
-                            <InboxIcon />
+                            <BarChartIcon />
                         </ListItemIcon>
                         <ListItemText
                             primary="Bar Chart"
@@ -268,7 +272,7 @@ export default function SideNav() {
                                 justifyContent: 'center',
                             }}
                         >
-                            <InboxIcon />
+                            <AssignmentIcon />
                         </ListItemIcon>
                         <ListItemText
                             primary="timeline"
