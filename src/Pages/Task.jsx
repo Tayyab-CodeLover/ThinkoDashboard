@@ -30,7 +30,7 @@ const Task = () => {
             </Box>
             <Box  >
               <Box >
-                <Typography variant="h4" sx={{ color: '#fff' }}>
+                <Typography variant="h4" sx={{ color: '#fff', fontSize:'25px' }}>
                   Starts from
                 </Typography>
                 <Typography variant="subtitle2" sx={{ color: 'rgb(190, 187, 187)', mt: 0.25 }}>
@@ -85,7 +85,7 @@ const Task = () => {
             </Box>
             <Box  >
               <Box >
-                <Typography variant="h4" sx={{ color: '#fff' }}>
+                <Typography variant="h4" sx={{ color: '#fff', fontSize:'25px' }}>
                   Starts from
                 </Typography>
                 <Typography variant="subtitle2" sx={{ color: 'rgb(190, 187, 187)', mt: 0.25 }}>
@@ -140,7 +140,7 @@ const Task = () => {
             </Box>
             <Box  >
               <Box >
-                <Typography variant="h4" sx={{ color: '#fff' }}>
+                <Typography variant="h4" sx={{ color: '#fff', fontSize:'25px' }}>
                   Starts from
                 </Typography>
                 <Typography variant="subtitle2" sx={{ color: 'rgb(190, 187, 187)', mt: 0.25 }}>

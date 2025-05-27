@@ -10,12 +10,15 @@ import {
   Avatar,
   TextField,
   IconButton,
+  Divider,
   Chip
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import insurance from "../asset/background1.jpg";
 import SideNav from "../Components/SideNav";
+import StatusIndicator from "../Components/StatusIndicator";
+import SignalStrength from "../Components/SignalStrength";
 
 const Book = () => {
   const [open, setOpen] = useState(false);
@@ -27,18 +30,24 @@ const Book = () => {
       title: "Create styleguide foundation",
       description: "Create content for paceland App",
       image: insurance,
+      status: "In review",
+      priority: "Minor",
     },
     {
       niche: "Research",
       title: "Copywriting content",
       description: "Create content for paceland App",
       image: insurance,
+      status: "Ongoing",
+      priority: "Moderate",
     },
     {
       niche: "Planning",
       title: "Update Requirement list",
       description: "Create content for paceland App",
       image: insurance,
+      status: "Pending",
+      priority: "Critical",
     },
   ];
 
@@ -55,7 +64,7 @@ const Book = () => {
     <Box sx={{ display: 'flex', marginTop: '40px' }}>
       <SideNav />
       <Box component="main" sx={{ py: 5 }}>
-        <Typography sx={{p:3,px:'50px', fontSize:'30px'}}>🔥 Tasks</Typography>
+        <Typography sx={{ p: 3, px: '50px', fontSize: '30px' }}>🔥 Tasks</Typography>
         <Box sx={{ py: "20px", px: '20px' }}>
           <Box sx={{ width: { lg: "100%" }, margin: "0 auto" }}>
             <Box
@@ -146,23 +155,35 @@ const Book = () => {
             width: 400,
             backgroundColor: "#1e293b",
             borderLeft: "1px solid #334155",
-            marginTop:'4.3%',
-            width:'40%',
-            borderRadius:'50px',
-            height:'90vh',
-            marginRight:'10px'
+            marginTop: '4.3%',
+            width: '40%',
+            borderRadius: '50px',
+            height: '90vh',
+            marginRight: '10px'
           },
         }}
       >
         <Box sx={{ p: 3 }}>
           <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2, color: "white" }}>
-            {selectedCard?.title}
+            🔥 {selectedCard?.title}
           </Typography>
           <Typography variant="body2" sx={{ mb: 2, color: "gray" }}>
             {selectedCard?.description}
           </Typography>
 
           {/* Add more content here */}
+          <Divider />
+          <Typography sx={{marginBottom:'20px', marginTop:'20px'}}>Properties</Typography>
+          <Box sx={{marginBottom:'20px'}}>
+            <Box sx={{display:'flex', justifyContent:'space-between'}}>
+              <Typography sx={{color:'gray'}}>Progress</Typography>
+              <StatusIndicator status={selectedCard?.status} />
+            </Box>
+            <Box sx={{display:'flex', justifyContent:'space-between'}}>
+              <Typography sx={{color:'gray'}}>Urgency</Typography>
+              <SignalStrength priority={selectedCard?.priority} />
+            </Box>
+          </Box>
           <Typography variant="subtitle1" sx={{ color: "white", fontWeight: "bold", mb: 2 }}>
             Attachments
           </Typography>
@@ -176,7 +197,7 @@ const Book = () => {
             variant="outlined"
             size="small"
             sx={{
-              mt: 2,
+              mt: 30,
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "#334155",
                 color: "white",
