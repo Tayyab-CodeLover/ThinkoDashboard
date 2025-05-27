@@ -91,6 +91,7 @@ const Book = () => {
                       >
                         {card.niche}
                       </Button>
+                      <p>Waqas</p>
                     <CardMedia
                       component="img"
                       height="200"
