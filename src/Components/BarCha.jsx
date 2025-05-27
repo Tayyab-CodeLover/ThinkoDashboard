@@ -56,7 +56,7 @@ const BarCha = () => {
             <SideNav />
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
               <Typography variant='h3' sx={{marginBottom:'5%'}}>Revenue</Typography>
-                <ResponsiveContainer width="100%" height={600}>
+                <ResponsiveContainer width="100%" height={500}>
                     <BarChart
                         width={500}
                         height={300}
