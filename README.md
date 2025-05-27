@@ -3,7 +3,7 @@
 **Thinko Dashboard** is a React-based web application built as a collaborative and continuously improving project.  
 It’s ideal for learning, experimenting, and building scalable frontend features.
 
-> 👥 Developed by Tayyab Hussain and team.
+> 👥 Developed by Tayyab Hussain , Waqas Anwar and team.
 
 ---
 
