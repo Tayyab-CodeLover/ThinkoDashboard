@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { CustomThemeProvider } from "./Components/CustomThemeProvider";
 import App from "./App";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 
 const root = document.getElementById("root");
 
