@@ -1,15 +1,12 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
-import SideNav from '../Components/SideNav'
 import SettingTab from '../Components/SettingTab'
 
 const Setting = () => {
     return (
-        <Box sx={{ display: 'flex', marginTop: '40px' }}>
-            <SideNav />
-            <Box component="main" sx={{ py: 5 }}>
-                <Box sx={{}} >
-                    <Box sx={{ p: 3 }}>
+        <>
+                <Box>
+                    <Box>
                         <img src="https://images.unsplash.com/photo-1624396963238-df0e48367ff7?q=80&w=1736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style={{ height: '250px', width: '93vw' }} />
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '93vw' }}>
@@ -23,8 +20,7 @@ const Setting = () => {
                 <Box sx={{marginTop:'10px', marginLeft:'100px'}}>
                     <SettingTab />
                 </Box>
-            </Box>
-        </Box>
+        </>
     )
 }
 

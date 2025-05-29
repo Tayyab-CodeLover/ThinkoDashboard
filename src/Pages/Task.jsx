@@ -1,9 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import SideNav from '../Components/SideNav';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InsertLinkOutlinedIcon from '@mui/icons-material/InsertLinkOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
@@ -30,7 +28,7 @@ const Task = () => {
             </Box>
             <Box  >
               <Box >
-                <Typography variant="h4" sx={{ color: '#fff', fontSize:'25px' }}>
+                <Typography variant="h4" sx={{ fontSize:'25px' }}>
                   Starts from
                 </Typography>
                 <Typography variant="subtitle2" sx={{ color: 'rgb(190, 187, 187)', mt: 0.25 }}>
@@ -66,7 +64,7 @@ const Task = () => {
             />
           </Box>
           <Box sx={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-            <Button sx={{background: ' rgba(255, 255, 255, 0.05)', color:'white', gap:'5px', padding:'10px', borderRadius:'10px'}}>
+            <Button sx={{gap:'5px', padding:'10px', borderRadius:'10px'}}>
             <TimerOutlinedIcon />
             Remainder
             </Button>

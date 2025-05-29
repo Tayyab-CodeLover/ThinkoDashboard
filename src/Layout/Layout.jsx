@@ -1,23 +1,18 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import SideNav from "../Components/SideNav";
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
 
 
-function Layout(){
+function Layout() {
     return (
         <>
-        
-        <Navbar />
-        <Box sx={{display:"flex"}}>
-        <Box sx={{width:"15%"}}>
-        <Sidebar />
-        </Box>
-        <Box sx={{width:"85%", marginLeft:"50px"}}>
-        <Outlet />
-        </Box>
-        </Box>
+            <Box sx={{ display: 'flex', marginTop: '30px' }}>
+                <SideNav />
+                <Box component="main" sx={{ flexGrow: 1, p: 3, mt:'20px' }}>
+                    <Outlet />
+                </Box>
+            </Box>
         </>
     );
 }

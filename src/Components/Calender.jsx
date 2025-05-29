@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { Box } from '@mui/material'
-import SideNav from './SideNav.jsx'
 import { useTheme } from '@mui/material/styles';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -45,9 +44,6 @@ const Calender = () => {
         }
     };
     return (
-        <Box sx={{ display: 'flex', marginTop: '40px' }}>
-            <SideNav />
-            <Box component="main" sx={{ flexGrow: 1, p: 5 }}>
                 <Box display="flex" justifyContent="space-between">
                     <Box
                         flex="1 1 20%"
@@ -122,8 +118,6 @@ const Calender = () => {
                         />
                     </Box>
                 </Box>
-            </Box>
-        </Box>
     )
 }
 

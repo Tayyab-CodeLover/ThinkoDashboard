@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
-import SideNav from '../Components/SideNav';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
@@ -92,76 +91,129 @@ const Timeline = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', marginTop: '40px' }}>
-            <SideNav />
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                <Typography sx={{ fontSize: '30px', marginBottom: '20px' }}>Timeline</Typography>
 
-                <Paper elevation={0} sx={{ mt: 3, bgcolor: "transparent" }}>
-                    {/* Headers */}
-                    <Box
-                        sx={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr 200px 200px 200px",
-                            borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
-                            py: 1,
-                        }}
-                    >
-                        <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Feature</Typography>
-                        <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Progress</Typography>
-                        <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Urgency</Typography>
-                        <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Assigned to</Typography>
-                    </Box>
+        <>
+            <Typography sx={{ fontSize: '30px', marginBottom: '20px' }}>Timeline</Typography>
 
-                    {tasks.map((task) => (
-                        <React.Fragment key={task.id}>
+            <Paper elevation={0} sx={{ mt: 3, bgcolor: "transparent" }}>
+                {/* Headers */}
+                <Box
+                    sx={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 200px 200px 200px",
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
+                        py: 1,
+                    }}
+                >
+                    <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Feature</Typography>
+                    <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Progress</Typography>
+                    <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Urgency</Typography>
+                    <Typography variant="body2" sx={{ color: "text.secondary", fontWeight: "medium" }}>Assigned to</Typography>
+                </Box>
+
+                {tasks.map((task) => (
+                    <React.Fragment key={task.id}>
+                        <Box
+                            onClick={() => handleTaskSelect(task.id)}
+                            sx={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr 200px 200px 200px",
+                                borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
+                                py: 2,
+                                alignItems: "center",
+                                "&:hover": {
+                                    bgcolor: "rgba(255, 255, 255, 0.03)",
+                                },
+                            }}
+                        >
+                            {/* Feature */}
+                            <Box sx={{ display: "flex", alignItems: "center", gap: '10px' }}>
+                                <Checkbox
+                                    icon={<RadioButtonUncheckedIcon />}
+                                    checked={selectedTasks.includes(task.id)}
+                                    checkedIcon={<CheckCircleIcon sx={{ color: 'blue' }} />}
+                                    onChange={() => handleTaskSelect(task.id)}
+                                    onClick={(e) => e.stopPropagation()}
+                                    sx={{ mr: 1 }}
+                                />
+                                <Typography variant="body2" color="text.secondary">{task.taskNumber}</Typography>
+                                <Typography variant="body1">{task.title}</Typography>
+                                {task.comments && (
+                                    <Box color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                        <ChatBubbleOutlineIcon sx={{ fontSize: '18px' }} />
+                                        <Typography sx={{ fontSize: '15px' }}>{task.comments}</Typography>
+                                    </Box>
+                                )}
+                            </Box>
+
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                                <StatusIndicator status={task.status} />
+                            </Box>
+
+                            <Box>
+                                <SignalStrength priority={task.priority} />
+                            </Box>
+
+                            <Box sx={{ display: 'flex', gap: 1 }}>
+                                {task.assignedTo.map((assignee, index) => (
+                                    <img
+                                        key={index}
+                                        src={assignee}
+                                        alt={`avatar-${index}`}
+                                        height={30}
+                                        width={30}
+                                        style={{
+                                            backgroundColor: 'blue',
+                                            borderRadius: '5px',
+                                            padding: '5px',
+                                        }}
+                                    />
+                                ))}
+                            </Box>
+                        </Box>
+
+                        {/* Subtasks (if selected) */}
+                        {selectedTasks.includes(task.id) && task.subtasks?.map((sub, subIndex) => (
                             <Box
-                                onClick={() => handleTaskSelect(task.id)}
+                                onClick={() => handleSubtaskSelect(sub.id)}
+                                key={sub.id}
                                 sx={{
                                     display: "grid",
                                     gridTemplateColumns: "1fr 200px 200px 200px",
-                                    borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
-                                    py: 2,
+                                    pl: 6,
+                                    py: 1,
+                                    borderBottom: "1px solid rgba(255, 255, 255, 0.04)",
                                     alignItems: "center",
-                                    "&:hover": {
-                                        bgcolor: "rgba(255, 255, 255, 0.03)",
-                                    },
+                                    bgcolor: "rgba(255,255,255,0.02)"
                                 }}
                             >
-                                {/* Feature */}
-                                <Box sx={{ display: "flex", alignItems: "center", gap: '10px' }}>
+                                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                                     <Checkbox
                                         icon={<RadioButtonUncheckedIcon />}
-                                        checked={selectedTasks.includes(task.id)}
+                                        checked={selectedSubtasks.includes(sub.id)}
                                         checkedIcon={<CheckCircleIcon sx={{ color: 'blue' }} />}
-                                        onChange={() => handleTaskSelect(task.id)}
+                                        onChange={() => handleSubtaskSelect(sub.id)}
                                         onClick={(e) => e.stopPropagation()}
                                         sx={{ mr: 1 }}
                                     />
-                                    <Typography variant="body2" color="text.secondary">{task.taskNumber}</Typography>
-                                    <Typography variant="body1">{task.title}</Typography>
-                                    {task.comments && (
-                                        <Box color="text.secondary" sx={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                            <ChatBubbleOutlineIcon sx={{ fontSize: '18px' }} />
-                                            <Typography sx={{ fontSize: '15px' }}>{task.comments}</Typography>
-                                        </Box>
-                                    )}
+                                    <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                                        {task.taskNumber}.{subIndex + 1}
+                                    </Typography>
+                                    <Typography variant="body1">{sub.title}</Typography>
                                 </Box>
 
                                 <Box sx={{ display: "flex", alignItems: "center" }}>
-                                    <StatusIndicator status={task.status} />
+                                    <StatusIndicator status={sub.status} />
                                 </Box>
 
-                                <Box>
-                                    <SignalStrength priority={task.priority} />
-                                </Box>
+                                <SignalStrength priority={sub.priority} />
 
                                 <Box sx={{ display: 'flex', gap: 1 }}>
-                                    {task.assignedTo.map((assignee, index) => (
+                                    {sub.assignedTo.map((assignee, i) => (
                                         <img
-                                            key={index}
+                                            key={i}
                                             src={assignee}
-                                            alt={`avatar-${index}`}
+                                            alt={`sub-avatar-${i}`}
                                             height={30}
                                             width={30}
                                             style={{
@@ -173,66 +225,12 @@ const Timeline = () => {
                                     ))}
                                 </Box>
                             </Box>
+                        ))}
+                    </React.Fragment>
+                ))}
+            </Paper>
+        </>
 
-                            {/* Subtasks (if selected) */}
-                            {selectedTasks.includes(task.id) && task.subtasks?.map((sub, subIndex) => (
-                                <Box
-                                    onClick={()=>handleSubtaskSelect(sub.id)}
-                                    key={sub.id}
-                                    sx={{
-                                        display: "grid",
-                                        gridTemplateColumns: "1fr 200px 200px 200px",
-                                        pl: 6,
-                                        py: 1,
-                                        borderBottom: "1px solid rgba(255, 255, 255, 0.04)",
-                                        alignItems: "center",
-                                        bgcolor: "rgba(255,255,255,0.02)"
-                                    }}
-                                >
-                                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                                        <Checkbox
-                                            icon={<RadioButtonUncheckedIcon />}
-                                            checked={selectedSubtasks.includes(sub.id)}
-                                            checkedIcon={<CheckCircleIcon sx={{ color: 'blue' }} />}
-                                            onChange={() => handleSubtaskSelect(sub.id)}
-                                             onClick={(e) => e.stopPropagation()}
-                                            sx={{ mr: 1 }}
-                                        />
-                                        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                                            {task.taskNumber}.{subIndex + 1}
-                                        </Typography>
-                                        <Typography variant="body1">{sub.title}</Typography>
-                                    </Box>
-
-                                    <Box sx={{ display: "flex", alignItems: "center" }}>
-                                        <StatusIndicator status={sub.status} />
-                                    </Box>
-
-                                    <SignalStrength priority={sub.priority} />
-
-                                    <Box sx={{ display: 'flex', gap: 1 }}>
-                                        {sub.assignedTo.map((assignee, i) => (
-                                            <img
-                                                key={i}
-                                                src={assignee}
-                                                alt={`sub-avatar-${i}`}
-                                                height={30}
-                                                width={30}
-                                                style={{
-                                                    backgroundColor: 'blue',
-                                                    borderRadius: '5px',
-                                                    padding: '5px',
-                                                }}
-                                            />
-                                        ))}
-                                    </Box>
-                                </Box>
-                            ))}
-                        </React.Fragment>
-                    ))}
-                </Paper>
-            </Box>
-        </Box>
     );
 };
 

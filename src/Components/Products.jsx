@@ -1,6 +1,4 @@
 import React, { useEffect,useState } from 'react'
-import { Box } from '@mui/material'
-import SideNav from './SideNav.jsx'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -26,9 +24,6 @@ const Products = () => {
     fetchProducts();
   },[]);
   return (
-    <Box sx={{ display: 'flex',marginTop:'50px'}}>
-      <SideNav />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Stack direction="row" gap={3}>
         <Card sx={{ maxWidth:'50%', minWidth:'200px' }}>
             <CardContent>
@@ -51,8 +46,6 @@ const Products = () => {
             </CardContent>
         </Card>
         </Stack>
-      </Box>
-    </Box>
   )
 }
 

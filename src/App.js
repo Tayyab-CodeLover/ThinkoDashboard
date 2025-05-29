@@ -6,19 +6,14 @@ import Task from "./Pages/Task.jsx";
 import Timeline from './Pages/Timeline.jsx'
 import Setting from './Pages/Setting.jsx'
 import Book from "./Pages/Book.jsx";
-import Test from './Components/Test.jsx';
 import Layout from './Layout/Layout.jsx';
 import { Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <div>
-      {/* <Routes>
-        <Route path="/" element={<Layout />}>
-        <Route index element={<Test />} />
-        </Route>
-      </Routes> */}
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
         <Route path="/barchart" element={<BarCha/>} />
         <Route path='/products' element={<Products/>}/>
         <Route path="/calender" element={<Calender/>}/>
@@ -26,6 +21,7 @@ function App() {
         <Route path="/timeline" element={<Timeline/>}/>
         <Route path="/setting" element={<Setting/>}/>
         <Route path="/book" element={<Book/>}/>
+        </Route>
       </Routes>
     </div>
   );

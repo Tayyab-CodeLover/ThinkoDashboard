@@ -7,16 +7,13 @@ import {
   CardMedia,
   CardContent,
   Drawer,
-  Avatar,
   TextField,
   IconButton,
   Divider,
-  Chip
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import insurance from "../asset/background1.jpg";
-import SideNav from "../Components/SideNav";
 import StatusIndicator from "../Components/StatusIndicator";
 import SignalStrength from "../Components/SignalStrength";
 
@@ -61,9 +58,7 @@ const Book = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', marginTop: '40px' }}>
-      <SideNav />
-      <Box component="main" sx={{ py: 5 }}>
+    <>
         <Typography sx={{ p: 3, px: '50px', fontSize: '30px' }}>🔥 Tasks</Typography>
         <Box sx={{ py: "20px", px: '20px' }}>
           <Box sx={{ width: { lg: "100%" }, margin: "0 auto" }}>
@@ -143,7 +138,6 @@ const Book = () => {
             </Box>
           </Box>
         </Box>
-      </Box>
 
       {/* Drawer Component */}
       <Drawer
@@ -152,7 +146,6 @@ const Book = () => {
         onClose={handleDrawerClose}
         sx={{
           "& .MuiDrawer-paper": {
-            width: 400,
             backgroundColor: "#1e293b",
             borderLeft: "1px solid #334155",
             marginTop: '4.3%',
@@ -213,7 +206,7 @@ const Book = () => {
           />
         </Box>
       </Drawer>
-    </Box>
+    </>
   );
 };
 

@@ -1,6 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
-import SideNav from './SideNav.jsx'
 import Typography from '@mui/material/Typography';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -52,9 +50,7 @@ const data = [
 
 const BarCha = () => {
     return (
-        <Box sx={{ display: 'flex', marginTop: '30px' }}>
-            <SideNav />
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <>
               <Typography variant='h3' sx={{marginBottom:'5%'}}>Revenue</Typography>
                 <ResponsiveContainer width="100%" height={500}>
                     <BarChart
@@ -77,8 +73,7 @@ const BarCha = () => {
                         <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
                     </BarChart>
                 </ResponsiveContainer>
-            </Box>
-        </Box>
+      </>
     )
 }
 
