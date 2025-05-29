@@ -1,5 +1,5 @@
 import React from "react";
-import SideNav from "../Components/SideNav";
+import SideNav from "./SideNav";
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
 

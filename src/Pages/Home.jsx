@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import Cards from '../Components/Cards.jsx'
-import Task from '../Pages/Task.jsx'
+import Task from '../Components/Task.jsx'
 
 const Home = () => {
   return (

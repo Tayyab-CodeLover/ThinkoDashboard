@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-import Navbar from '../Layout/Navbar';
-import DrawerL from '../Layout/DrawerL'
+import Navbar from './Navbar';
+import DrawerL from './DrawerL'
 
 const drawerWidth = 240;
 
